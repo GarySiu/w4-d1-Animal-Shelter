@@ -1,9 +1,10 @@
-class Clients
-  def initialize('name','gender','age')
+class Client
+  def initialize(name, gender)
     @name = name
     @gender = gender
-    @age = age
-    @number_of_pets = ''
-
+    @age = 0
+    @pets = []
   end
+  attr_reader :name, :gender
+  attr_accessor :age, :pets
 end
