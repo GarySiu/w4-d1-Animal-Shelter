@@ -8,6 +8,6 @@ class Client
   attr_reader :name, :gender, :age
   attr_accessor :pets
   def to_s
-    "You have registered #{name} (#{gender}/#{age})"
+    "#{name} (#{gender}/#{age})"
   end
 end

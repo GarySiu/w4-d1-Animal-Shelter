@@ -1,7 +1,6 @@
 require_relative 'animals'
 require_relative 'clients'
 require_relative 'shelters'
-
 shelter = Shelter.new('Animal Hospital')
 
 ## TEST VALUES ##
@@ -11,8 +10,8 @@ shelter = Shelter.new('Animal Hospital')
 # animal = Animal.new('Spot','Dalmatian')
 # puts "There is a pet named #{animal.name} and they are are #{animal.breed}"
 
-def list_clients
-  # clients.
+def list_clients client
+  client.clients.each_with_index { |client, index| puts "#{index}: #{client}" }
 end
 
 
@@ -43,8 +42,8 @@ while response.downcase != 'q'
     client_gender = gets.upcase.chomp
     puts 'Ask them their age. Maintain eye contact.'
     client_age = gets.to_i # What do you mean this should be a time object?
-    puts shelter.add_client(client_name, client_gender, client_age)
-    # puts "You have registered #{client.name} (#{client.gender}/#{client.age})"
+    print "You have registered #{client_name} #{client_gender}/#{client_age}"
+    shelter.add_client(client_name, client_gender, client_age)
     gets
   when '2' # List registered clients'
     puts 'Here are all our clients'
