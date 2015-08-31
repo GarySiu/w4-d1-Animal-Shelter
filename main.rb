@@ -28,3 +28,26 @@ def menu
 end
 
 response = menu
+
+while response.downcase != 'q'
+  case response
+  when '1' # Register a new client'
+    puts 'Please enter the client\'s name'
+    client_name = gets.chomp
+    puts 'Discretely check their gender (m/f). For reasons.'
+    client_gender = gets.upcase.chomp
+    puts 'Ask them their age. Maintain eye contact.'
+    client_age = gets.to_i # What do you mean this should be a time object?
+    client = Client.new(client_name, client_gender, client_age)
+    puts "You have registered #{client.name} (#{client.gender}/#{client.age})"
+    gets
+  when '2' # List registered clients'
+  when '3' # Register a new animal'
+  when '4' # List registered animals'
+  when '5' # Give up animal for adoption'
+  when '6' # List animals availible for adoption'
+
+  end
+
+  response = menu
+end

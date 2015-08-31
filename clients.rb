@@ -1,10 +1,10 @@
 class Client
-  def initialize(name, gender)
+  def initialize(name, gender, age)
     @name = name
     @gender = gender
-    @age = 0
+    @age = age
     @pets = []
   end
-  attr_reader :name, :gender
-  attr_accessor :age, :pets
+  attr_reader :name, :gender, :age
+  attr_accessor :pets
 end
