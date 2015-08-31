@@ -1,10 +1,11 @@
 class Animal
-  def initialize(name,breed)
+  def initialize(owner, name, breed, age, gender, toys)
+    @owner = owner
     @name = name
     @breed = breed
-    @age = 0
-    @gender = ''
-    @favorite_toys = ''
+    @age = age
+    @gender = gender
+    @favorite_toys = toys
   end
   attr_reader :name, :breed
   attr_accessor :age, :gender, :favorite_toys

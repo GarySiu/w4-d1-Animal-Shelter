@@ -35,7 +35,7 @@ response = menu
 
 while response.downcase != 'q'
   case response
-  when '1' # Register a new client'
+  when '1' # Register a new client
     puts 'Please enter the client\'s name'
     client_name = gets.chomp
     puts 'Discretely check their gender (m/f). For reasons.'
@@ -45,14 +45,30 @@ while response.downcase != 'q'
     print "You have registered #{client_name} #{client_gender}/#{client_age}"
     shelter.add_client(client_name, client_gender, client_age)
     gets
-  when '2' # List registered clients'
+  when '2' # List registered clients
     puts 'Here are all our clients'
     list_clients(shelter)
     gets
-  when '3' # Register a new animal'
-  when '4' # List registered animals'
-  when '5' # Give up animal for adoption'
-  when '6' # List animals availible for adoption'
+  when '3' # Register a new animal (owner, name, breed, age, gender, toys)
+    puts 'Please select the pet\'s owner'
+    list_clients(shelter)
+    pet_owner = gets.to_i
+    puts 'What is the animal\'s name?'
+    pet_name = gets.chomp
+    puts 'What is the animal\'s breed?'
+    pet_breed = gets.chomp
+    puts 'Please enter the animal\'s age'
+    pet_age = gets.to_i
+    puts 'Check the animal\'s gender'
+    pet_gender = gets.upcase.chomp
+    puts 'Finally ask the owner if the pet has any favorite toys'
+    pet_toys = gets.chomp
+    shelter.add_pet(pet_owner, pet_name, pet_breed, pet_age, pet_gender, pet_toys)
+    puts "#{pet_name} has been registered!"
+    gets
+  when '4' # List registered animals
+  when '5' # Give up animal for adoption
+  when '6' # List animals availible for adoption
 
   end
 
