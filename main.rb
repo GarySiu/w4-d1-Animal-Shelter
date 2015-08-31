@@ -11,6 +11,11 @@ shelter = Shelter.new('Animal Hospital')
 # animal = Animal.new('Spot','Dalmatian')
 # puts "There is a pet named #{animal.name} and they are are #{animal.breed}"
 
+def list_clients
+  # clients.
+end
+
+
 def menu
   puts `clear`
   puts '*' * 52
@@ -38,10 +43,13 @@ while response.downcase != 'q'
     client_gender = gets.upcase.chomp
     puts 'Ask them their age. Maintain eye contact.'
     client_age = gets.to_i # What do you mean this should be a time object?
-    client = Client.new(client_name, client_gender, client_age)
-    puts "You have registered #{client.name} (#{client.gender}/#{client.age})"
+    puts shelter.add_client(client_name, client_gender, client_age)
+    # puts "You have registered #{client.name} (#{client.gender}/#{client.age})"
     gets
   when '2' # List registered clients'
+    puts 'Here are all our clients'
+    list_clients(shelter)
+    gets
   when '3' # Register a new animal'
   when '4' # List registered animals'
   when '5' # Give up animal for adoption'
