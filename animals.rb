@@ -7,6 +7,9 @@ class Animal
     @gender = gender
     @favorite_toys = toys
   end
-  attr_reader :name, :breed
-  attr_accessor :age, :gender, :favorite_toys
+  attr_reader :name, :breed, :age, :gender
+  attr_accessor :owner, :favorite_toys
+  def to_s
+    "Owner ID: #{owner} Name: #{name}. #{gender}/#{age}. Breed: #{breed}.  Likes: #{favorite_toys}"
+  end
 end

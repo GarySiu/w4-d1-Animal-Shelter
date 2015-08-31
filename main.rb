@@ -10,10 +10,15 @@ shelter = Shelter.new('Animal Hospital')
 # animal = Animal.new('Spot','Dalmatian')
 # puts "There is a pet named #{animal.name} and they are are #{animal.breed}"
 
-def list_clients client
-  client.clients.each_with_index { |client, index| puts "#{index}: #{client}" }
+def list_clients shelter
+  shelter.clients.each_with_index { |client, index| puts "#{index}: #{client}" }
 end
 
+def list_animals shelter
+  shelter.housed_pets.each_with_index do |animal, index| 
+    puts "#{index}: #{animal}"
+  end
+end
 
 def menu
   puts `clear`
@@ -38,9 +43,9 @@ while response.downcase != 'q'
   when '1' # Register a new client
     puts 'Please enter the client\'s name'
     client_name = gets.chomp
-    puts 'Discretely check their gender (m/f). For reasons.'
+    puts 'Register their gender (m/f)'
     client_gender = gets.upcase.chomp
-    puts 'Ask them their age. Maintain eye contact.'
+    puts 'What is their age?'
     client_age = gets.to_i # What do you mean this should be a time object?
     print "You have registered #{client_name} #{client_gender}/#{client_age}"
     shelter.add_client(client_name, client_gender, client_age)
@@ -67,6 +72,9 @@ while response.downcase != 'q'
     puts "#{pet_name} has been registered!"
     gets
   when '4' # List registered animals
+    puts 'Here are all the animals'
+    list_animals(shelter)
+    gets
   when '5' # Give up animal for adoption
   when '6' # List animals availible for adoption
 
