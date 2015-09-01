@@ -14,15 +14,15 @@ def list_animals shelter
 end
 
 def list_adoptable shelter
-  shelter.housed_pets.each_with_index do |animal, index| 
-    puts "#{index}: #{animal}"
+  shelter.adoptable_pets.each_with_index do |animal, index| 
+    puts "#{index}: Name: #{animal.name}  #{animal.gender}/#{animal.age}  Previous Owner: #{shelter.clients[animal.owner].name}  Breed: #{animal.breed}  Likes: #{animal.favorite_toys}"
   end
 end
 
 def menu
   puts `clear`
   puts '*' * 80
-  puts '* Welcome to Animal Hospital *'.center 78
+  puts "* Welcome to Animal Hospital *".center 78
   puts '*' * 80
   puts '1: Register a new client'
   puts '2: List registered clients'
@@ -71,7 +71,7 @@ while response.downcase != 'q'
     puts "#{pet_name} has been registered!"
     gets
   when '4' # List registered animals
-    puts 'Here are all the animals'
+    puts 'Here are all the temporarily housed animals'
     list_animals(shelter)
     gets
   when '5' # Give up animal for adoption
@@ -81,7 +81,9 @@ while response.downcase != 'q'
     shelter.move_to_adopt(pet_id)
     gets
   when '6' # List animals availible for adoption
-
+    puts 'Here are all animals up for adoption'
+    list_adoptable(shelter)
+    gets
   end
 
   response = menu
