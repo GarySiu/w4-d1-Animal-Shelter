@@ -3,11 +3,11 @@ class Client
     @name = name
     @gender = gender
     @age = age
-    @pets = []
+    @pets = 0
   end
   attr_reader :name, :gender, :age
   attr_accessor :pets
   def to_s
-    "#{name} (#{gender}/#{age})"
+    "#{name} (#{gender}/#{age}) Housed pets: #{pets}"
   end
 end

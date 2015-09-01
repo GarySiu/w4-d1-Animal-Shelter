@@ -3,18 +3,17 @@ require_relative 'clients'
 require_relative 'shelters'
 shelter = Shelter.new('Animal Hospital')
 
-## TEST VALUES ##
-# client = Client.new('Bob','m')
-# puts "Our client is named #{client.name} and they are #{client.gender}"
-
-# animal = Animal.new('Spot','Dalmatian')
-# puts "There is a pet named #{animal.name} and they are are #{animal.breed}"
-
 def list_clients shelter
   shelter.clients.each_with_index { |client, index| puts "#{index}: #{client}" }
 end
 
 def list_animals shelter
+  shelter.housed_pets.each_with_index do |animal, index| 
+    puts "#{index}: Name: #{animal.name}  #{animal.gender}/#{animal.age}  Owner: #{shelter.clients[animal.owner].name}  Breed: #{animal.breed}  Likes: #{animal.favorite_toys}"
+  end
+end
+
+def list_adoptable shelter
   shelter.housed_pets.each_with_index do |animal, index| 
     puts "#{index}: #{animal}"
   end
@@ -22,9 +21,9 @@ end
 
 def menu
   puts `clear`
-  puts '*' * 52
-  puts '* Welcome to Animal Hospital *'.center 50
-  puts '*' * 52
+  puts '*' * 80
+  puts '* Welcome to Animal Hospital *'.center 78
+  puts '*' * 80
   puts '1: Register a new client'
   puts '2: List registered clients'
   puts '3: Register a new animal'
@@ -64,7 +63,7 @@ while response.downcase != 'q'
     pet_breed = gets.chomp
     puts 'Please enter the animal\'s age'
     pet_age = gets.to_i
-    puts 'Check the animal\'s gender'
+    puts 'Check the animal\'s gender (m/f)'
     pet_gender = gets.upcase.chomp
     puts 'Finally ask the owner if the pet has any favorite toys'
     pet_toys = gets.chomp
@@ -76,6 +75,11 @@ while response.downcase != 'q'
     list_animals(shelter)
     gets
   when '5' # Give up animal for adoption
+    puts 'Please select the pet to put up for adoption'
+    list_animals(shelter)
+    pet_id = gets.to_i
+    shelter.move_to_adopt(pet_id)
+    gets
   when '6' # List animals availible for adoption
 
   end

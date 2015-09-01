@@ -9,7 +9,4 @@ class Animal
   end
   attr_reader :name, :breed, :age, :gender
   attr_accessor :owner, :favorite_toys
-  def to_s
-    "Owner ID: #{owner} Name: #{name}. #{gender}/#{age}. Breed: #{breed}.  Likes: #{favorite_toys}"
-  end
 end

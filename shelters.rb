@@ -14,5 +14,12 @@ class Shelter
 
   def add_pet(pet_owner, pet_name, pet_breed, pet_age, pet_gender, pet_toys)
     housed_pets << Animal.new(pet_owner, pet_name, pet_breed, pet_age, pet_gender, pet_toys)
+    clients[pet_owner].pets += 1
+  end
+
+  def move_to_adopt pet_id
+    clients[housed_pets[pet_id].owner].pets -= 1
+    puts "#{housed_pets[pet_id].name} has been put up for adoption!"
+    adoptable_pets << housed_pets.slice!(pet_id)
   end
 end
